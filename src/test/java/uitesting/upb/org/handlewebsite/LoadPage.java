@@ -1,6 +1,8 @@
 package uitesting.upb.org.handlewebsite;
 
 import uitesting.upb.org.managefile.PropertyAccesor;
+import uitesting.upb.org.managepage.Nasa.AuthenticationPage;
+import uitesting.upb.org.managepage.Nasa.LeftPanel;
 import uitesting.upb.org.managepage.google.home.Home;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
@@ -13,7 +15,18 @@ public class LoadPage {
         return new Home();
     }
 
+    public static LeftPanel loadNasaApiListing () {
+        DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccesor.getInstance().getBaseURL());
+        return new LeftPanel();
+    }
+
+    public static AuthenticationPage loadAuthenticationPage() {
+        return new AuthenticationPage();
+    }
+
     public static void main(String[] args) {
-        loadGoogleHome().searchTextAndClickSearchButton("UPB cochabamba");
+        loadNasaApiListing().clickNasaApiListingButon().clickAuthentication().clickNasaApiListingButon().clickDemoKeyRateLimitsButton();
+        AuthenticationPage auth = loadAuthenticationPage();
+        System.out.println("Result: \n" + auth.getHourlyAndDailyLimits());
     }
 }
