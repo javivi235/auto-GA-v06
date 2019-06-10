@@ -39,7 +39,7 @@ public class LoadHomePage {
         nav.createAccount();
 
         CrearCuenta ca = loadCrearCuenta();
-        ca.insertNameAndAddAccount(PropertyAccesor.getInstance().getNewAccount());
+       // ca.insertNameAndAddAccount(PropertyAccesor.getInstance().getNewAccount());
         DriverManager.getInstance().salir();
 
     }

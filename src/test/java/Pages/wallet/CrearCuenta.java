@@ -17,20 +17,25 @@ public class CrearCuenta extends BasePage {
     @FindBy(xpath = "//*[@id=\"crearCuenta\"]")
     private WebElement crearCuentaBoton;
 
-    private CrearCuenta insertName (String nombre) {
+    public void insertName (String nombre) {
 
-        Events.fillTextField(nombreTextField, nombre);
         nombreTextField = DriverManager.getInstance().esperar(By.xpath("//*[@id=\"nombreCrearCuenta\"]"));
-        return this;
+        Events.fillTextField(nombreTextField, nombre);
 
     }
 
-    private void addAccount() {
+    public void addAccount() {
         crearCuentaBoton = DriverManager.getInstance().esperar(By.xpath("//*[@id=\"crearCuenta\"]"));
         Events.click(crearCuentaBoton);
     }
 
-    public void insertNameAndAddAccount (String name) {
-        insertName(name).addAccount();
+    public boolean isInsertNameVisible () {
+        nombreTextField = DriverManager.getInstance().esperar(By.xpath("//*[@id=\"nombreCrearCuenta\"]"));
+        return Events.isVisible(nombreTextField);
+    }
+
+    public boolean isAddAccountButton () {
+        crearCuentaBoton = DriverManager.getInstance().esperar(By.xpath("//*[@id=\"crearCuenta\"]"));
+        return Events.isVisible(crearCuentaBoton);
     }
 }

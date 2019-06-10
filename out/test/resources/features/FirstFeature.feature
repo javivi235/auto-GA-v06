@@ -28,3 +28,19 @@ Feature: Verificar Wallet Home
         Then Search the save name button
         And click save button
         Then search alerta superior
+    Scenario: Crear cuenta
+        Given Walle page is loaded
+        And browser is maximazed
+        And link is redirect to goblal account: "http://localhost:8080/#/cuentas/Global"
+        Then Search the navbar button
+        And Click the nav bar button
+        Then Search the add account button
+        And Click the nav bar add account button
+        Then link is redirect to create page: "http://localhost:8080/#/crear"
+        Then Search the account name field
+        And fill the account name field with "Comida"
+        Then Search the add account button in the create page
+        And click the add acount button
+        Then link is redirect to Comida account: "http://localhost:8080/#/cuentas/Comida"
+        Then Search textfield with the account name
+        And Check if the account name is "Comida"
