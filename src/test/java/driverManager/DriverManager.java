@@ -42,4 +42,18 @@ public class DriverManager {
         return webElement;
     }
 
+    public void salir () {
+
+        webDriver.quit();
+
+    }
+
+    public void maximizar() {
+        webDriver.manage().window().maximize();
+    }
+
+    public String getURL () {
+        return webDriver.getCurrentUrl();
+    }
+
 }
